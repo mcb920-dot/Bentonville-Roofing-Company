@@ -404,7 +404,16 @@ footer{background:#111;color:rgba(255,255,255,.65);padding:48px 20px 24px}
 <div class="sticky-call"><a href="tel:4793129603">&#128222; Call Now &mdash; (479) 312-9603</a></div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("open")}
-document.querySelectorAll('.faq-q').forEach(btn => {
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+});
   btn.addEventListener('click', () => {
     const item = btn.parentElement;
     const isOpen = item.classList.contains('open');
